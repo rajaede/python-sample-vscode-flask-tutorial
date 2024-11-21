@@ -40,6 +40,11 @@ steps:
       publishLocation: 'Container'
 
   - script: |
+      echo $(System.DefaultWorkingDirectory)
+      echo $(Build.ArtifactStagingDirectory)
+      echo $(Build.BuildId)
+
+  - script: |
       pip install pytest pytest-azurepipelines
       pytest
     displayName: 'pytest'
