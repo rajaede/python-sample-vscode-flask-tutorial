@@ -1,0 +1,29 @@
+name: Build and deploy Python app to Azure Web App
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: Azure/login@v2.2.0
+        with:
+        
+          # ClientId of the Azure Service principal created.
+          client-id: ${{ secrets.client_id }}
+          # TenantId of the Azure Service principal created.
+          tenant-id: ${{ secrets.tenant_id }}
+          # Azure subscriptionId
+          subscription-id: ${{ vars.subscription_id }}
+          # Set this value to true to enable Azure PowerShell Login in addition to Azure CLI login
+          enable-AzPSSession: true
+          
+                
+              
